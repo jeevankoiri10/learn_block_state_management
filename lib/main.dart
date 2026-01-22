@@ -1,6 +1,11 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:test/screen/counter_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test/bloc/counter/counter_bloc.dart';
+import 'package:test/bloc/image_picker/image_picker_bloc.dart';
+import 'package:test/bloc/image_picker/utils/image_picker_utils.dart';
+import 'package:test/bloc/slider/slider_bloc.dart';
+import 'package:test/bloc/toggle/toggle_bloc.dart';
+import 'package:test/screen/bloc_learn_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +21,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: ThemeData.dark(), home: MyHomePage());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CounterBloc()),
+        BlocProvider(create: (context) => ToggleBloc()),
+        BlocProvider(create: (context) => SliderBloc()),
+        BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
+      ],
+      child: MaterialApp(theme: ThemeData.dark(), home: MyHomePage()),
+    );
   }
 }
 
@@ -30,9 +43,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    debugPrint('Build the homepage');
+
     return Scaffold(
-      appBar: AppBar(title: Text('Hello world')),
-      body: CounterScreen(),
+      appBar: AppBar(title: Text('Hello world 2')),
+      body: BlocLearnScreen(),
     );
   }
 }

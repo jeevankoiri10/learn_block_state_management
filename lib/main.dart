@@ -4,6 +4,7 @@ import 'package:test/bloc/counter/counter_bloc.dart';
 import 'package:test/bloc/image_picker/image_picker_bloc.dart';
 import 'package:test/bloc/image_picker/utils/image_picker_utils.dart';
 import 'package:test/bloc/slider/slider_bloc.dart';
+import 'package:test/bloc/todo/todo_bloc.dart';
 import 'package:test/bloc/toggle/toggle_bloc.dart';
 import 'package:test/screen/bloc_learn_screen.dart';
 
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (context) => ToggleBloc()),
         BlocProvider(create: (context) => SliderBloc()),
         BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
+        BlocProvider(create: (context) => TodoBloc()),
       ],
       child: MaterialApp(theme: ThemeData.dark(), home: MyHomePage()),
     );

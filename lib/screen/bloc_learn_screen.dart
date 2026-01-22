@@ -14,6 +14,7 @@ import 'package:test/bloc/slider/slider_state.dart';
 import 'package:test/bloc/toggle/toggle_bloc.dart';
 import 'package:test/bloc/toggle/toggle_event.dart';
 import 'package:test/bloc/toggle/toggle_state.dart';
+import 'package:test/screen/todo_screen.dart';
 
 class BlocLearnScreen extends StatefulWidget {
   const BlocLearnScreen({super.key});
@@ -25,7 +26,7 @@ class BlocLearnScreen extends StatefulWidget {
 class _BlocLearnScreenState extends State<BlocLearnScreen> {
   @override
   Widget build(BuildContext context) {
-    debugPrint('build whole counter screen');
+    debugPrint('Build whole counter screen');
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -137,6 +138,16 @@ class _BlocLearnScreenState extends State<BlocLearnScreen> {
                   ),
                 );
               },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => TodoScreen(),
+                  ),
+                );
+              },
+              child: Text("Go to TODO Page made using Bloc"),
             ),
           ],
         ),
